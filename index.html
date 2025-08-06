@@ -259,22 +259,21 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             overflow: hidden;
+            position: relative;
         }
 
         .tool-card-link {
             display: block;
             text-decoration: none;
             color: inherit;
+            height: 100%;
             padding: 25px;
+            transition: var(--transition);
         }
 
         .tool-card-link:hover {
-            color: inherit;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.15);
         }
 
         .tool-icon {
@@ -290,36 +289,62 @@
             font-size: 1.8rem;
         }
 
+        .tool-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
         .tool-card h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            text-align: center;
         }
 
         .tool-card p {
             color: var(--gray);
             margin-bottom: 20px;
             font-size: 0.95rem;
-            text-align: center;
+        }
+
+        .tool-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         .tool-link {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 8px 24px;
             background-color: var(--primary);
             color: white;
             border-radius: 30px;
-            text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
             transition: var(--transition);
-            margin: 0 auto;
             text-align: center;
-            width: fit-content;
         }
 
         .tool-link:hover {
             background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
+        }
+
+        .tool-card-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0.05) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .tool-card-link:hover::after {
+            opacity: 1;
         }
 
         /* Features Section */
@@ -666,103 +691,130 @@
             
             <div class="tools-grid">
                 <!-- Tool Card 1 - Image Compressor -->
-               <div class="tool-card">
-    <a href="/tools/img-compress.html" class="tool-card-link" aria-label="Image Compressor Tool">
-        <div class="tool-icon" aria-hidden="true">
-            <i class="fas fa-compress-alt"></i>
-        </div>
-        <div class="tool-content">
-            <h3>Image Compressor</h3>
-            <p>Reduce image file size without losing quality. Perfect for websites and social media.</p>
-            <div class="tool-meta">
-                <span class="tool-link">Use Tool</span>
-                <span class="tool-badge"></span>
-            </div>
-        </div>
-    </a>
-</div>
+                <div class="tool-card">
+                    <a href="image-compressor.html" class="tool-card-link" aria-label="Image Compressor Tool">
+                        <div class="tool-icon" aria-hidden="true">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h3>Image Compressor</h3>
+                            <p>Reduce image file size without losing quality. Perfect for websites and social media.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 
                 <!-- Tool Card 2 - PDF to Word -->
                 <div class="tool-card">
-                    <a href="pdf-to-word.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="pdf-to-word.html" class="tool-card-link" aria-label="PDF to Word Converter">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-file-pdf"></i>
                         </div>
-                        <h3>PDF to Word</h3>
-                        <p>Convert your PDF documents to editable Word files while preserving formatting.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>PDF to Word</h3>
+                            <p>Convert your PDF documents to editable Word files while preserving formatting.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 3 - Image Converter -->
                 <div class="tool-card">
-                    <a href="image-converter.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="image-converter.html" class="tool-card-link" aria-label="Image Format Converter">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-exchange-alt"></i>
                         </div>
-                        <h3>Image Converter</h3>
-                        <p>Convert between JPG, PNG, GIF, WebP and other popular image formats.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>Image Converter</h3>
+                            <p>Convert between JPG, PNG, GIF, WebP and other popular image formats.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 4 - PDF Compressor -->
                 <div class="tool-card">
-                    <a href="pdf-compressor.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="pdf-compressor.html" class="tool-card-link" aria-label="PDF Compressor Tool">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-file-archive"></i>
                         </div>
-                        <h3>PDF Compressor</h3>
-                        <p>Reduce PDF file size while maintaining quality. Perfect for email attachments.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>PDF Compressor</h3>
+                            <p>Reduce PDF file size while maintaining quality. Perfect for email attachments.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 5 - Image Resizer -->
                 <div class="tool-card">
-                    <a href="image-resizer.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="image-resizer.html" class="tool-card-link" aria-label="Image Resizer Tool">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-crop-alt"></i>
                         </div>
-                        <h3>Image Resizer</h3>
-                        <p>Resize your images to any dimension while maintaining aspect ratio.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>Image Resizer</h3>
+                            <p>Resize your images to any dimension while maintaining aspect ratio.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 6 - Word to PDF -->
                 <div class="tool-card">
-                    <a href="word-to-pdf.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="word-to-pdf.html" class="tool-card-link" aria-label="Word to PDF Converter">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-file-word"></i>
                         </div>
-                        <h3>Word to PDF</h3>
-                        <p>Convert Word documents to high-quality PDF files with a single click.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>Word to PDF</h3>
+                            <p>Convert Word documents to high-quality PDF files with a single click.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 7 - Image Cropper -->
                 <div class="tool-card">
-                    <a href="image-cropper.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="image-cropper.html" class="tool-card-link" aria-label="Image Cropper Tool">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-images"></i>
                         </div>
-                        <h3>Image Cropper</h3>
-                        <p>Crop images to remove unwanted areas or focus on specific parts.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>Image Cropper</h3>
+                            <p>Crop images to remove unwanted areas or focus on specific parts.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 
                 <!-- Tool Card 8 - PDF Merger -->
                 <div class="tool-card">
-                    <a href="pdf-merger.html" class="tool-card-link">
-                        <div class="tool-icon">
+                    <a href="pdf-merger.html" class="tool-card-link" aria-label="PDF Merger Tool">
+                        <div class="tool-icon" aria-hidden="true">
                             <i class="fas fa-file-merge"></i>
                         </div>
-                        <h3>PDF Merger</h3>
-                        <p>Combine multiple PDF files into a single document in seconds.</p>
-                        <span class="tool-link">Use Tool</span>
+                        <div class="tool-content">
+                            <h3>PDF Merger</h3>
+                            <p>Combine multiple PDF files into a single document in seconds.</p>
+                            <div class="tool-actions">
+                                <span class="tool-link">Use Tool</span>
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
